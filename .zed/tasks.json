@@ -1,0 +1,28 @@
+[
+    {
+        "label": "C: Compile and Run",
+        "command": "dir=$(dirname $ZED_FILE); base=$(basename $ZED_FILE); out=${base%.*}; cd $dir && gcc $base -o $out && ./$out",
+        "reveal": "always",
+        "allow_concurrent_runs": false
+    },
+    {
+        "label": "Imprimir hola",
+        "command": "echo \"hello world\""
+    },
+    {
+        "label": "DECIR ADIOS",
+        "command": "echo adiooooooos"
+    },
+
+    {
+        "label": "Debug ZED_FILE",
+        "command": "echo \"ZED_FILE=[$ZED_FILE]\"; echo \"shell=[$SHELL]\"",
+        "reveal": "always"
+    },
+
+    {
+        "label": "Debug eval",
+        "command": "echo \"dir=$(dirname \\\"$ZED_FILE\\\") base=$(basename \\\"$ZED_FILE\\\")\"",
+        "reveal": "always"
+    }
+]

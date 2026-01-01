@@ -1,0 +1,3 @@
+Hola, esto es vim.
+Adios
+Esto es vim embebido
