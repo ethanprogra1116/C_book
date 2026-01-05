@@ -3,10 +3,11 @@
 // conmutativos no hay problema pero con las restas por ejemplo si.
 // push es poner en el stack y pop es sacar del stack
 #include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h> /* for atof() */
 #include <math.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h> /* for atof() */
+#define _GNU_SOURCE
 
 #define MAXOP 100  /* max size of operand or operator */
 #define NUMBER '0' /* signal that a number was found */
@@ -23,7 +24,7 @@ int main(void) {
     double op2;
     bool resta = false;
     // Solo se guarda el valor actual por loop sea operador o numero.
-    char s[MAXOP]; // Lo usa getop para guardar el caracter actual, si es numero se transforma, si no solo se devuelve el operador.
+    char s[MAXOP];
 
     while ((type = getop(s)) != EOF) {
         switch (type) {
@@ -58,6 +59,16 @@ int main(void) {
         case '\n':
             printf("\t%.8g\n", pop());
             break;
+        case 's': // seno
+            push(sin(pop() * M_PI / 180.0));
+            break;
+        case 'e': // exponencial
+            push(sin(pop()));
+            break;
+        case '^': // power
+            op2 = pop();
+            push(pow(pop(), op2));
+            break;
         default:
             printf("error: unknown command %s\n", s);
             break;
@@ -66,8 +77,8 @@ int main(void) {
     return 0;
 }
 
-#define MAXVAL 100  /* maximum depth of val stack */
-int sp = 0;         /* next free stack position */
+#define MAXVAL 100 /* maximum depth of val stack */
+int sp = 0;        /* next free stack position */
 // Aca se guardan puros valores numericos
 double val[MAXVAL]; /* value stack */
 
@@ -90,14 +101,17 @@ double pop(void) {
     }
 }
 
-
 /* getop: get next character or numeric operand */
-// Si es un operador lo retornamos y si no lo es retornamos un 0 y el valor se queda guardado en el array que nos pasaron
+// Si es un operador lo retornamos y si no lo es retornamos un 0 y el valor se
+// queda guardado en el array que nos pasaron
 int getop(char s[]) {
     int i, c;
-    while ((s[0] = c = getch()) == ' ' || c == '\t') // Eliminamos los espacios y los tabs. Se asigna un caracter valido
+    while ((s[0] = c = getch()) == ' ' ||
+           c == '\t') // Eliminamos los espacios y los tabs. Se asigna un
+                      // caracter valido
         ;
-    s[1] = '\0'; // Despues de tener solo un caracter valido terminamos el string.
+    s[1] =
+        '\0'; // Despues de tener solo un caracter valido terminamos el string.
     if (!isdigit(c) && c != '.' && c != '-')
         return c; /* not a number */
     i = 0;
@@ -115,9 +129,11 @@ int getop(char s[]) {
     if (c == '.') /* collect fraction part */
         while (isdigit(s[++i] = c = getch()))
             ;
-    s[i] = '\0'; //Cuando el while de arriba se cumpla se va a haber evaluado la expresion ++i aun siendo falso.
+    s[i] = '\0'; // Cuando el while de arriba se cumpla se va a haber evaluado
+                 // la expresion ++i aun siendo falso.
 
-    /* Tambien para llegar a este punto estamos seguros que es un numero y leimos un caracter de mas */
+    /* Tambien para llegar a este punto estamos seguros que es un numero y
+     * leimos un caracter de mas */
     if (c != EOF)
         ungetch(c);
     return NUMBER;
@@ -128,7 +144,9 @@ char buf[BUFSIZE]; /* buffer for ungetch */
 int bufp = 0;      /* next free position in buf */
 
 /* get a (possibly pushed-back) character */
-int getch(void) { return (bufp > 0) ? buf[--bufp] : getchar(); } // Checa si hay caracteres en el bolsillo buf. Si no agarra uno nuevo
+int getch(void) {
+    return (bufp > 0) ? buf[--bufp] : getchar();
+} // Checa si hay caracteres en el bolsillo buf. Si no agarra uno nuevo
 void ungetch(int c) { /* push character back on input */
     if (bufp >= BUFSIZE)
         printf("ungetch: too many characters\n");
