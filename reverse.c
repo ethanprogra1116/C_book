@@ -14,8 +14,7 @@ int main() {
     limpiar(palabra, palabra_alreves, 1000);
     while ((c = getchar()) != EOF) {
         if(c != '\n') {
-            palabra[i] = c;
-            ++i;
+            palabra[i++] = c;
         } else {
             reverse(palabra, palabra_alreves, i);
             printf("La original es %s", palabra);
