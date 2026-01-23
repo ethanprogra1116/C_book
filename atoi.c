@@ -14,16 +14,16 @@ int main() {
 
 // Convertimos un numero de un string a un numero decimal.
 int atois(char s[]) {
-    int  i, j, multiplier, total;
+    int  i, j, mult, total;
     // double multiplier, total;
     total = 0;
     // Si mi array es de 10 elementos 9 son numeros, el indice mayor sera 8
     for (i = 0; s[i] != '\0'; i++)
         ;
 
-    for (multiplier = i, j = 0; multiplier >= 0 && s[j] != '\0' ; multiplier--, j++) {
-        printf("El numero actual es %c, y el equivalente es %f\n", s[j], ((s[j] - '0') * pow(10, multiplier - 1)));
-        total += (s[j] - '0') * pow(10, multiplier - 1);
+    for (mult = i, j = 0; mult >= 0 && s[j] != '\0' ; mult--, j++) {
+        printf("El numero actual es %c, y el equivalente es %f\n", s[j], ((s[j] - '0') * pow(10, mult - 1)));
+        total += (s[j] - '0') * pow(10, mult - 1);
         printf("El total hasta el momento es de %d\n", total);
     }
 

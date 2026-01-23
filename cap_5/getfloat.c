@@ -4,18 +4,18 @@
 #define SIZE 1000
 int getch(void);
 void ungetch(int);
-// int getint(int *);
 
 int main() {
-    int n, array[SIZE], getint(int *);
-    for (n = 0; n < SIZE && getint(&array[n]) != EOF; n++)
+    int n;
+    double array[SIZE], getfloat(double *);
+    for (n = 0; n < SIZE && getfloat(&array[n]) != EOF; n++)
         ;
 
     return 0;
 }
 
-int getint(int *pn) {
-    int c, sign;
+double getfloat(double *pn) {
+    int c, sign, i;
     while (isspace(c = getch())) /* skip white space */
         ;
     if (!isdigit(c) && c != EOF && c != '+' && c != '-') {
@@ -27,6 +27,13 @@ int getint(int *pn) {
         c = getch();
     for (*pn = 0; isdigit(c); c = getch())
         *pn = 10 * *pn + (c - '0');
+    if (c == '.') {
+        c = getch();
+        for (i = 0; isdigit(c); c = getch(), i++) {
+            *pn = (10 * *pn) + (c - '0');
+        }
+        *pn = *pn / (10 * i);
+    }
     *pn *= sign;
     if (c != EOF)
         ungetch(c);
