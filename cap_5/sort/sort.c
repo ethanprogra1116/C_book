@@ -1,14 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#define MAXLINES 5000    /* max #lines to be sorted */
+#include "sort.h"
+
 char *lineptr[MAXLINES]; /* pointers to text lines */
-int readlines(char *lineptr[], int nlines);
-void writelines(char *lineptr[], int nlines);
-void qsorts(char *lineptr[], int left, int right);
-
-// Rewrite readlines to store lines in an array supplied by main, rather than
-// calling alloc to maintain storage. How much faster is the program?
-
 /* sort input lines */
 int main() {
     int nlines; /* number of input lines read */
@@ -23,22 +17,29 @@ int main() {
     return 0;
 }
 
-#define MAXLEN 1000 /* max length of any input line */
-int getlines(char *, int);
-char *alloc(int);
+
 
 /* readlines: read input lines returns nlines*/
 int readlines(char *lineptr[], int maxlines) {
+    // Variables antiguas
     int len, nlines;
-    char *p, line[MAXLEN];
+    char line[MAXLEN]; // Current line. Solo una
+
+    // Variables de allocator
+    #define ALLOCSIZE 10000
+    static char allocbuf[ALLOCSIZE]; /* storage for alloc */
+    static char *allocp = allocbuf;  /* next free position */
+
     nlines = 0;
-    while ((len = getlines(line, MAXLEN)) > 0)
-        if (nlines >= maxlines || (p = alloc(len)) == NULL)
+    while ((len = get_line(line, MAXLEN)) > 0)
+        if (nlines >= maxlines || (allocbuf + ALLOCSIZE - allocp) < len ) { // No cabe o ya llegamos al maximo de lineas
             return -1;
+        }
         else {
             line[len - 1] = '\0'; /* delete newline */
-            strcpy(p, line);
-            lineptr[nlines++] = p;
+            strcpy(allocp, line);
+            lineptr[nlines++] = allocp;
+            allocp += len;
         }
     return nlines;
 }
@@ -46,12 +47,13 @@ int readlines(char *lineptr[], int maxlines) {
 /* writelines: write output lines */
 void writelines(char *lineptr[], int nlines) {
     int i;
-    for (i = 0; i < nlines; i++)
+    for (i = 0; i < nlines; i++) {
         printf("%s\n", lineptr[i]);
+    }
 }
 
 /* getline: read a line into s, return length */
-int getlines(char s[], int lim) {
+static int get_line(char s[], int lim) {
     int c, i;
     // Copiamos todos los valores, excepto \n y paramos cuando sea EOF
     for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i) {
