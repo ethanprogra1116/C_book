@@ -94,5 +94,10 @@ int main(int argc, char *argv[]) {
 > *Nota*:  argv[argc] tiene que ser igual a un NULL pointer.
 
 ## Punteros a funciones
+```C
 qsort((void **)lineptr, 0, nlines - 1,
               (int (*)(void *, void *))(numeric ? numcmp : strcmp));
+```
+En este ejemplo qsort, numcmp y strcmp son addresses de functions. Los & estan implicitos, al igual que con el nombre de un array que es &array[0]. Esto pasa porque son simbolos que conoce el compilador ya de antemano.
+
+**Generic pointer**: void *
