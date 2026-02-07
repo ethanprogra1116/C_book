@@ -19,3 +19,11 @@ struct {
 (*p).len
 p -> len
 ```
+When a function returns a complicated type like a
+structure pointer, as in
+struct key *binsearch(char *word, struct key *tab, int n)
+the function name can be hard to see, and to find with a text editor. Accordingly an alternate
+style is sometimes used:
+struct key *
+binsearch(char *word, struct key *tab, int n)
+This is a matter of personal taste; pick the form you like and hold to it.

@@ -12,11 +12,21 @@ int main() {
     long double long_double;
     var_int = var_short = var_long = caracter = 0;
     var_float = long_double = 0.0;
+    typedef struct {
+        int edad;
+    } Persona;
 
-    printf("El largo de Int es de %ld\n", sizeof(var_int));
-    printf("El largo de Short es de %ld\n", sizeof(var_short));
-    printf("El largo de Long es de %ld\n", sizeof(var_long));
-    printf("El largo de caracter es de %ld\n", sizeof(caracter));
-    printf("El largo de float es de %ld\n", sizeof(var_float));
-    printf("El largo de long double es de %ld\n", sizeof(long_double));
+    Persona *pp;
+    Persona ethan;
+    pp = &ethan;
+
+    printf("el largo de int es de %ld\n", sizeof(var_int));
+    printf("el largo de short es de %ld\n", sizeof(var_short));
+    printf("el largo de long es de %ld\n", sizeof(var_long));
+    printf("el largo de caracter es de %ld\n", sizeof(caracter));
+    printf("el largo de float es de %ld\n", sizeof(var_float));
+    printf("el largo de long double es de %ld\n", sizeof(long_double));
+    printf("el tamaño de es %lu\n", sizeof(Persona));
+    printf("El tamaño de un puntero a un struct es %lu\n", sizeof(pp));
+    printf("un puntero a un struct es %s que un int\n", (sizeof(NULL) > sizeof(int) ? "mayor" : "menor"));
 }

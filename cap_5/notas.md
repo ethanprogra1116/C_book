@@ -101,3 +101,5 @@ qsort((void **)lineptr, 0, nlines - 1,
 En este ejemplo qsort, numcmp y strcmp son addresses de functions. Los & estan implicitos, al igual que con el nombre de un array que es &array[0]. Esto pasa porque son simbolos que conoce el compilador ya de antemano.
 
 **Generic pointer**: void *
+
+Dato: La adicion de punteros es ilegal, la substraccion es legal.
