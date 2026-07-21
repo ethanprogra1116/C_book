@@ -1,12 +1,44 @@
 # Structures
 Esto es lo mas parecido a un objeto y sirve para "POO" masomenos. No como en C++.
-Struct es una coleccion de variables que pueden incluir structs que se asocian bajo un mismo nombre.
+Struct es una coleccion de variables que pueden incluir structs que se asocian bajo un mismo nombre padre.
 > The keyword struct introduces a structure declaration, which is a list of declarations enclosed
 in braces.
 - The variables named in a structure are called members.
 - Pueden servir como una clase de namespace
 - A structure can be initialized by following its definition with a list of initializers, each a constant expression.
 - Se usa el dot notation para acceder a los miembros
+
+---
+
+> La unica accion legal que se le puede aplicar a un struct es copiar, asignarse(=), tomar su adress (&) (punteros) o acceder a sus miembros. **lo cual incluye pasar argumentos a funciones y retornar valores de funciones tambien**
+*No puede compararse*
+
+
+Un ejemplo de esto:
+```C
+  #include <stdio.h>
+
+  struct persona {
+    char *nombre; //no se puede darle un valor por defaulto como en C++ que despues de esto iria un = "Default" por ejemplo
+    int edad;
+  };
+  
+  void saludar(struct persona p) {
+    if (p.nombre[0] != '\0') {
+      printf("Hola %s", p.nombre);
+    }
+  }
+  
+  int main(void) {
+    struct persona persona1 = {"Sergio Ramos", 42};
+    saludar(persona1);
+    return 0;
+  }
+```
+
+---
+
+En cuanto al espacio reservado si la declaración no se sigue por una lista de variable o variables el programa no reserva espacio, solo funciona como una clase de template
 
 ## Punteros a structures
 ```C
@@ -21,9 +53,13 @@ p -> len
 ```
 When a function returns a complicated type like a
 structure pointer, as in
+```c
 struct key *binsearch(char *word, struct key *tab, int n)
-the function name can be hard to see, and to find with a text editor. Accordingly an alternate
-style is sometimes used:
+// the function name can be hard to see, and to find with a text editor. Accordingly an alternate
+// style is sometimes used:
 struct key *
 binsearch(char *word, struct key *tab, int n)
+```
 This is a matter of personal taste; pick the form you like and hold to it.
+
+## Self referential structures
