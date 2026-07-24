@@ -47,10 +47,26 @@ struct {
     char *s;
 } *p;
 
+// A pointer to a structure of type struct point
+struct point *pp;
+
 // Equivalentes
 (*p).len
 p -> len
+
+
+struct point origin, *pp;
+
+pp = &origin;
+
+printf("origin is (%d, %d) \n", (*pp).x, (*pp).y);
+
 ```
+
+## Precedence
+Los operadores ".", "->" junto con () para funciones y [] de arrays estan en el *top de
+la precedencia de operadores*
+
 When a function returns a complicated type like a
 structure pointer, as in
 ```c

@@ -4,10 +4,12 @@
 struct key {
     char *word;
     int count;
-} keytab[] = {"auto", 0, "break", 0, "case", 0, "char", 0, "const", 0,
-              "continue", 0, "default", 0,
+} keytab[] = {{"auto", 0}, {"break", 0}, {"case", 0}, {"char", 0}, {"const", 0},
+              {"continue", 0}, {"default", 0},
               /* ... */
-              "unsigned", 0, "void", 0, "volatile", 0, "while", 0};
+              {"unsigned", 0}, {"void", 0}, {"volatile", 0}, {"while", 0}};
+// As a note... before the above structures were only separated by commas, not in sub-braces.
+// it functions otherwise but this is more idiomatic and readable.
 
 #include <ctype.h>
 #include <stdio.h>
