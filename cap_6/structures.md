@@ -79,3 +79,4 @@ binsearch(char *word, struct key *tab, int n)
 This is a matter of personal taste; pick the form you like and hold to it.
 
 ## Self referential structures
+Un ejemplo puede verse en `bintree.c` [archivo](./bintree.c)

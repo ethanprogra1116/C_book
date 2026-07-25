@@ -131,3 +131,7 @@ Todos los operadores tienen associativity left-rigth a excepcion de
 - assignment operators and expressions
 - Operador ternario ?:
 - Operadores unarios
+
+### Compilacion segura
+Ejemplo: 
+`gcc -Wall -Wextra -g -fsanitize=address,undefined bintree.c utils.c -o bintree`

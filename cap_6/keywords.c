@@ -81,7 +81,7 @@ int getword(char *word, int lim) {
     if (c != EOF)
         *w++ = c;
 
-    // Si no es alfanumerico solo devuelve el valor
+    // Si no es una letra solo devuelve el valor
     if (!isalpha(c)) {
         *w = '\0';
         return c;
