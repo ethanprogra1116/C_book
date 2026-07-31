@@ -9,8 +9,9 @@
  1. hay que implementar argc y argv para el parametro --LISTO
  2. Que el parser ignore strings y comentarios --LISTO desde la funcion getword
  3. Que ignore palabras reservadas --LISTO
- 4. que ignore lo que este entre "" o '' -- NO LISTO
- 5. Finalmente imprimir el arbol -- A MEDIAS
+ 4. que ignore lo que este entre "" o '' -- LISTO
+ 5. Finalmente imprimir el arbol -- LISTO
+ todo terminado
 
  Hipotesis inicial: Cualquier palabra que no tenga en su inicio o final algun
  simbolo como * o () y que ademas no sea palabra reservada, que no sea
