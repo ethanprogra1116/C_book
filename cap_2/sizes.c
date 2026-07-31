@@ -20,13 +20,13 @@ int main() {
     Persona ethan;
     pp = &ethan;
 
-    printf("el largo de int es de %ld\n", sizeof(var_int));
-    printf("el largo de short es de %ld\n", sizeof(var_short));
-    printf("el largo de long es de %ld\n", sizeof(var_long));
-    printf("el largo de caracter es de %ld\n", sizeof(caracter));
-    printf("el largo de float es de %ld\n", sizeof(var_float));
-    printf("el largo de long double es de %ld\n", sizeof(long_double));
-    printf("el tamaño de es %lu\n", sizeof(Persona));
-    printf("El tamaño de un puntero a un struct es %lu\n", sizeof(pp));
-    printf("un puntero a un struct es %s que un int\n", (sizeof(NULL) > sizeof(int) ? "mayor" : "menor"));
+    printf("el largo de int es de %ld\n", sizeof(var_int)); // result: 4
+    printf("el largo de short es de %ld\n", sizeof(var_short)); // result: 2
+    printf("el largo de long es de %ld\n", sizeof(var_long)); // result: 8
+    printf("el largo de caracter es de %ld\n", sizeof(caracter)); // result: 1
+    printf("el largo de float es de %ld\n", sizeof(var_float)); // result: 4
+    printf("el largo de long double es de %ld\n", sizeof(long_double)); // result: 8
+    printf("el tamaño de es %lu\n", sizeof(Persona)); // result: 4
+    printf("El tamaño de un puntero a un struct es %lu\n", sizeof(pp)); // result: 8
+    printf("un puntero a un struct es %s que un int\n", (sizeof(NULL) > sizeof(int) ? "mayor" : "menor")); // result: menor
 }

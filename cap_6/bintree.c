@@ -6,10 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
 #define MAXWORD 100
 struct tnode *addtree(struct tnode *, char *);
 void treeprint(struct tnode *);
-int getword(char *, int);
+int getword(char *, int, int comments);
 
 struct tnode {           /* tree node */
     char *word;          /* the word itself */
@@ -22,7 +24,7 @@ int main(void) {
     struct tnode *root;
     char word[MAXWORD];
     root = NULL;
-    while (getword(word, MAXWORD) != EOF)
+    while (getword(word, MAXWORD, false) != EOF)
         if (isalpha(word[0])) // Ignoramos numeros y caracteres especiales. Solo se aceptan letras
           // root solo cambia una vez al inicio. la asignacion de todos los nodos
           // se hace recursivamente por addtree
