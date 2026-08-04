@@ -80,3 +80,19 @@ This is a matter of personal taste; pick the form you like and hold to it.
 
 ## Self referential structures
 Un ejemplo puede verse en `bintree.c` [archivo](./bintree.c)
+
+## Install/lookup
+Cuando tenemos una rutina que busca y reemplaza como el preprocesador de C necesitamos una estructura de datos que lo guarde. Esta estructura es una lookup table o hash map
+
+En C implementaremos dos rutinas que pueden buscar y reemplazar texto. Se pueden ver en `hashmap.c`.
+
+install(s, p) determina el texto p para la entrada s en la tabla.
+lookup(s) busca la entrada s y devuelve el puntero a su struct o NULL si la entrada no existe
+
+## Linked list 
+La forma estandar de recorrer una linked list es la siguiente
+```C
+for (ptr = head; ptr != NULL; ptr = ptr->next)
+```
+
+un ejemplo puede encontrase en `hashmap.c`

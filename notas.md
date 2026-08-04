@@ -113,7 +113,7 @@ i++ es posincremento
 Si los usamos en un array de esa forma
 int i = 5;
 s[++i]; //Accedemos al elemento 6
-[i++]; //Accedemos al elemento 5 y despues incrementamos.
+s[i++]; //Accedemos al elemento 5 y despues incrementamos.
 
 
 ### Bitwise operators
@@ -135,3 +135,12 @@ Todos los operadores tienen associativity left-rigth a excepcion de
 ### Compilacion segura
 Ejemplo: 
 `gcc -Wall -Wextra -g -fsanitize=address,undefined bintree.c utils.c -o bintree`
+-Wall y -Wextra son en tiempo de compilación
+
+### Sanitizers
+Es en tiempo de runtime
+`-fsanitize` es su flag y tiene opciones como
+- address para problemas de corrupcion de memoria
+- undefined para detectar undefined behavior
+- thread para codigo de multiples hilos
+- memory(solo clang) cuando leemos memoria no inicializada
