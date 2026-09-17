@@ -3,4 +3,3 @@
 -Wall
 -Wno-unused-variable
 -Wno-unused-parameter
--I/usr/lib/llvm-19/lib/clang/19/include
