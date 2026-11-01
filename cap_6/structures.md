@@ -96,3 +96,14 @@ for (ptr = head; ptr != NULL; ptr = ptr->next)
 ```
 
 un ejemplo puede encontrase en `hashmap.c`
+
+## Typedef
+Puede parecer parecido a #define, pero este solo sustituye de una manera mas rudimentaria. Las ventajas se ven como en este ejemplo:
+```C
+typedef int (*PFI)(char *, char *);
+
+// Use cases
+PFI strcmp, numcmp; // strcmp is an actual function part of the c standard
+```
+en el que el alias del type es PFI, digamos el alias siempre sera el simbolo dentro de la expresion, que normalmente es la ultima palabra, pero en casos como este puede estar en medio 
+Este tipo es un puntero a una funcion que toma como argumentos dos punteros a char y devuelve un int
